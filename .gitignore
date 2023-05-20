@@ -4,8 +4,5 @@
 */*/debug*
 */*/tmp*
 
-*/*/comps*
-!*/*/comps/source*
-
 */*/turntable*
 !*/*/turntable-pose.png
