@@ -1,0 +1,42 @@
+{
+    "order": [
+        "body",
+        "rleg",
+        "lleg",
+        "rarm",
+        "larm"
+    ],
+    "arm": [
+        "upper",
+        "lower"
+    ],
+    "leg": [
+        "lower",
+        "upper"
+    ],
+
+    "run": [
+        {
+            "type": "median",
+            "count": 9,
+            "payload": {
+                "denoising_strength": 0.20,
+                "steps": 20
+            }
+        },
+        {
+            "type": "single",
+            "payload": {
+                "denoising_strength": 0.15,
+                "steps": 20
+            }
+        },
+        {
+            "type": "face",
+            "payload": {
+                "denoising_strength": 0.10,
+                "steps": 40
+            }
+        }
+    ]
+}
