@@ -26,7 +26,7 @@
         {
             "type": "face",
             "payload": {
-                "denoising_strength": 0.40,
+                "denoising_strength": 0.10,
                 "steps": 40
             }
         }
