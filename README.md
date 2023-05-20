@@ -15,11 +15,13 @@ NOTE: `rembg` is not being used directly in python, but being called by the cmd 
 # Usage
 
 ## Create a Workspace
+
 1. Create a folder within the `workspaces` folder and name it what you like.
 2. Go into `settings.py` and, in the first line, change the `WORKSPACE` variable to point to your new folder.
 3. Your workspace will need some pose information. Either copy all of the contents of `workspaces/template` into your new workpsace, or create your own poses from scratch.
 
 ## Create a Turntable
+
 In the root of your workspace, you should find a turntable-pose.png image (copied from `workspaces/template`). You will need to make an image through stable diffusion with that pose. This will be used in all of the Stable Diffusion runs, not being modified itself, but to act as a reference for how the characters in your animation should look. It is important to spend some time making this look nice and exactly how you want your resulting character to look, as everything else will be based on this turntable image.
 
 Once you have a turntable image that you are happy with, place it in the root of your workspace (next to `turntable-pose.png`) and rename the new image to `turntable-image.png`.
@@ -43,8 +45,9 @@ NOTE: This and the following steps will have to be done per animation folder (`s
 ## Rendering out an Animation
 
 1. Make sure your Automatic1111 webui is open and select the model you want to use (this program calls into the API).
-2. Call `python render.py <anim_name>` and you should see images appearing in `renders/<anim_name>`.
-3. If you want to change settings for how these are run, open `anims/<anim_name>/settings.py`. In here you can change what order images are spliced together and what stable diffusion settings are used (steps, denoising strength, etc.).
+2. Open `render.py` and modify the `char_desc`, `pos_prompt`, and `neg_prompt` variables to contain your prompt information. Note that the `char_desc` gets put inside `pos_prompt` by default.
+3. Call `python render.py <anim_name>` and you should see images appearing in `renders/<anim_name>`.
+4. If you want to change settings for how these are run, open `anims/<anim_name>/settings.py`. In here you can change what order images are spliced together and what stable diffusion settings are used (steps, denoising strength, etc.).
 
 ## Iterating an Animation
 
