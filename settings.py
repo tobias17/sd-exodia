@@ -1,4 +1,4 @@
-WORKSPACE = "workspaces/000"
+WORKSPACE = "workspaces/template"
 
 SPRITESHEET_NAME = "sheet.png"
 

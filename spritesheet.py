@@ -7,12 +7,16 @@ import math
 import subprocess
 from tqdm import tqdm
 
-anims_to_join = [ "idle", "srun-interp", "frun-interp" ]
+RE_STRIP = False
+
+ANIMS_TO_JOIN = [ "srun", "frun", "brun" ]
+DO_ALL = False
+
+# ANIMS_TO_JOIN = [ "idle", "srun-interp", "frun-interp", "brun-interp" ]
+# DO_ALL = True
+
 SPRITESHEET_RESCALE = 0.5        # 
 SPRITESHEET_MAX_WIDTH = 16384    # 
-
-DO_ALL = True
-RE_STRIP = False
 
 def create_spritesheet(imgs):
     row_count = 1
@@ -50,9 +54,9 @@ def main():
     assert os.path.exists(RENDERS_PATH), f"Could not find renders root, run render.py or check settings, settings.py says it is RENDERS_PATH='{RENDERS_PATH}'"
     
     sprites = []
-    for anim_folder in anims_to_join:
+    for anim_folder in ANIMS_TO_JOIN:
         render_root = f"{RENDERS_PATH}/{anim_folder}"
-        assert os.path.exists(render_root), f"Could not find render_root '{render_root}', check anims_to_join variable or run render.py"
+        assert os.path.exists(render_root), f"Could not find render_root '{render_root}', check ANIMS_TO_JOIN variable or run render.py"
 
         for iter in range(1, 1000):
             touch_file_path = f"{render_root}/.iter{iter:03}"

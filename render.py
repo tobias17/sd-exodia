@@ -1,6 +1,6 @@
 from settings import *
 
-from PIL import Image, PngImagePlugin
+from PIL import Image
 from tqdm import tqdm
 import numpy as np
 import cv2
@@ -11,8 +11,6 @@ import io
 import sys
 import base64
 import requests
-
-
 
 #=========================================================================================
 # Settings                        # Descriptions
@@ -381,6 +379,9 @@ def run_through_sd(anim_folder, anim_name, paths, full_payload, face_payload, ru
             run_face = True
         else:
             raise RuntimeError(f"Found unexpected value for run entry payload '{entry['type']}'")
+        
+        if width_override is not None:
+            payload["width"] = width_override
 
         enc_imgs = call_sd(payload, enc_img, enc_face if run_face else enc_mask, enc_pose)
 
@@ -403,6 +404,8 @@ def run_through_sd(anim_folder, anim_name, paths, full_payload, face_payload, ru
             if SHOW_INTERM:
                 save_encoded_img(enc_img, f"{DEBUG_FOLDER}/{anim_folder}/{anim_name}_interm_{gen_count:02}.png")
                 gen_count += 1
+    
+    save_encoded_img(enc_img, final_path)
 
     if x_split1 is not None:
         final_img = split_image(cv2.imread(final_path), x_split1, x_split2)

@@ -20,7 +20,7 @@ import os
 #=========================================================================================
 USE_CONTROLNET = True     # Whether the code will run Stable Diffusion with a ControlNet
 INCLUDE_TURNTABLE = True  # Will be added to the very left
-IMGS_LEFT  = 1            # How many images are placed to the left of the image being run
+IMGS_LEFT  = 0            # How many images are placed to the left of the image being run
 IMGS_RIGHT = 1            # Same as above, but to the right
 
 run = [                   # The settings to run through Stable Diffusion
